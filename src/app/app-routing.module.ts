@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashBoardComponent } from './component/dashboard/dashboard.component';
-import { ResumeComponent } from './component/Resume/resume.component';
+import { ToDoListComponent } from './component/todo-item/todo-item.component';
 
 const routes: Routes = [
   { path: '', component: DashBoardComponent },
-  {path:'resume' , component: ResumeComponent},
+  {path:'todo' , component: ToDoListComponent},
   { path: '**', component: DashBoardComponent },
 ];
 

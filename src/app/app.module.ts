@@ -4,20 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashBoardComponent } from './component/dashboard/dashboard.component';
-import { ResumeComponent } from './component/Resume/resume.component';
-import { ResumeService } from './service/resume.service';
+import { ToDoListComponent } from './component/todo-list/todo-list.component';
+import { ToDoService } from './service/todo.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashBoardComponent,
-    ResumeComponent
+    ToDoListComponent,
+    ToDoListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ResumeService],
+  providers: [ToDoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
