@@ -5,7 +5,7 @@ import { Todo } from 'src/app/Model/todo.interface';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = []; // Array to store list of todos
