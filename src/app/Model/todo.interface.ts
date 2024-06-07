@@ -3,3 +3,8 @@ export interface Todo {
   completed : boolean;
   description : string;
 }
+
+export interface Item{
+  label : string;
+  image : string ;
+}
