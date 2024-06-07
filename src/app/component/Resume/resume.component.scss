@@ -1,0 +1,67 @@
+/* resume.component.css */
+
+.resume {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  // background-color: #f0f0f0; /* Background color for the entire resume */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.objective,
+.experience,
+.education,
+.skills,
+.certifications {
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 28px;
+ font-weight: bold; /* Text color for the heading */
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+//  color: #007bff; /* Text color for section headings */
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+ // color: #555555; /* Text color for subheadings */
+  margin-bottom: 9px;
+}
+
+p {
+  margin: 5px 0;
+  //color: #666666; /* Text color for paragraphs */
+}
+
+ul {
+  padding-left: 20px; /* Add left padding for the unordered list */
+}
+
+li {
+  margin-bottom: 5px;
+ // color: #777777; /* Text color for list items */
+}
+
+a{
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.line-height {
+  line-height: 2.3;
+}

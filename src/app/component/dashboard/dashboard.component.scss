@@ -1,0 +1,298 @@
+// .text-heading {
+//   color: goldenrod;
+//   font-size: larger;
+// }
+.container-fluid {
+  color: white;
+}
+
+.intro-text {
+ // font-size: 24px;
+  font-weight: bold;
+}
+
+.text-heading {
+  color: #ff9800;
+  font-size: larger;/* Change color as needed */
+}
+
+.about-text {
+  font-size: 18px;
+}
+
+h4 {
+  color: #ff9800; /* Change color as needed */
+}
+.skill-box {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.skill-box img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+#contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #ff9800;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #f57c00;
+}
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.quote {
+  margin-top: 20px;
+}
+
+.quote-text {
+  font-style: italic;
+  font-size: 18px;
+}
+.text-row {
+  text-align: center;
+}
+
+.work-experience {
+  margin-top: 50px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  border-left: 4px solid #ff9800;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #ff9800;
+}
+
+.experience-item:last-child::before {
+  height: 50%;
+}
+
+.experience-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experience-date {
+  font-size: 14px;
+  color: #777;
+}
+
+.company {
+  font-weight: bold;
+}
+
+.role {
+  margin-top: 5px;
+  color: #777;
+}
+
+.responsibilities {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.responsibilities li {
+  list-style-type: none;
+  position: relative;
+}
+
+.responsibilities li::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff9800;
+}
+.work-experience {
+  margin-top: 50px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  @media only screen and (min-width: 767px) {
+  margin-left: 6rem;
+}
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 50px; /* Adjust as needed */
+}
+
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px; /* Adjust as needed */
+  height: 4px;
+  background-color: #ff9800;
+  border-radius: 2px;
+}
+
+.experience-item:last-child::before {
+  height: 50%;
+}
+
+.experience-title {
+  text-align: center;
+}
+
+.experience-date {
+  font-size: 14px;
+  color: white;
+}
+
+.company {
+  font-weight: bold;
+}
+
+.role {
+  margin-top: 5px;
+  color: #777;
+}
+
+.responsibilities {
+  padding-left: 20px;
+}
+
+.responsibilities li {
+  position: relative;
+  list-style: none;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.responsibilities li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ff9800;
+}
+.text-center {
+  align-items: center;
+}
+.background {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.dashboard {
+  background-color: black;
+   color: white;
+}
+.btn-black {
+  background-color: #000;
+  color: #fff;
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+.intro-text {
+  // font-size: 3em; /* Increased font size */
+  // color: #ffcc00; /* Golden color */
+  margin-bottom: 10px;
+}
+
+// .text-heading {
+//   color: #000; /* Black color */
+// }
+
+.sub-text {
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.tagline {
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.skills {
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-black:hover {
+  background-color: #333;
+}
+@media only screen and (max-width: 800px) {
+ .smalltext{
+  display: none;
+ }
+}
