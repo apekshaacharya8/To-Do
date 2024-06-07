@@ -4,7 +4,7 @@ import { DashBoardComponent } from './component/dashboard/dashboard.component';
 import { TodoListComponent } from './component/todo-list/todo-list.component';
 
 const routes: Routes = [
-  { path: '', component: TodoListComponent },
+  { path: '', component: DashBoardComponent },
   {path:'todo' , component: TodoListComponent},
   { path: '**', component: DashBoardComponent },
 ];
