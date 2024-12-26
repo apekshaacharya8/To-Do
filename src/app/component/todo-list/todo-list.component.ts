@@ -9,6 +9,9 @@ import { TodoService , Todo } from 'src/app/service/todo.service';
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
+  currentTodo: Todo = { id: 0, title: '', description: '', completed: false };
+  isEditing: boolean = false;
+
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
@@ -42,5 +45,13 @@ export class TodoListComponent implements OnInit {
       this.todoService.deleteTodo(id);
       this.todos = this.todoService.getTodos();
     }
+  }
+
+  openModal(todo?: Todo){
+
+  }
+
+  saveTodo(){
+
   }
 }

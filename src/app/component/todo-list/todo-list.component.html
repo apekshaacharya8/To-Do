@@ -1,15 +1,70 @@
 <div class="container my-4">
-  <h2>To-Do List</h2>
-  <button class="btn btn-primary mb-3" (click)="newTodo()">Add New To-Do</button>
+  <h2 class="text-center">To-Do List</h2>
+  <button class="btn btn-primary mb-4" (click)="openModal()">Add New To-Do</button>
 
-  <div *ngFor="let todo of todos" class="card my-2">
-    <div class="card-body">
-      <h5 class="card-title">
-        <input type="checkbox" [(ngModel)]="todo.completed" /> {{ todo.title }}
-      </h5>
-      <p class="card-text">{{ todo.description }}</p>
-      <button class="btn btn-sm btn-warning me-2" (click)="editTodo(todo)">Edit</button>
-      <button class="btn btn-sm btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+  <!-- To-Do Cards -->
+  <div class="row">
+    <div *ngFor="let todo of todos" class="col-md-4 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">
+            <input type="checkbox" [(ngModel)]="todo.completed" class="form-check-input me-2" />
+            <span [class.text-decoration-line-through]="todo.completed">{{ todo.title }}</span>
+          </h5>
+          <p class="card-text">{{ todo.description }}</p>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-warning btn-sm" (click)="openModal(todo)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="todoModalLabel">{{ isEditing ? 'Edit To-Do' : 'Add New To-Do' }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="saveTodo()" #todoForm="ngForm">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                id="title"
+                class="form-control"
+                [(ngModel)]="currentTodo.title"
+                name="title"
+                required
+              />
+              <div class="text-danger" *ngIf="todoForm.submitted && !currentTodo.title">
+                Title is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                id="description"
+                class="form-control"
+                [(ngModel)]="currentTodo.description"
+                name="description"
+                required
+              ></textarea>
+              <div class="text-danger" *ngIf="todoForm.submitted && !currentTodo.description">
+                Description is required.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">{{ isEditing ? 'Update' : 'Save' }}</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
