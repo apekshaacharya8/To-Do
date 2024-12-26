@@ -1,89 +1,92 @@
-<div class="container my-4">
-  <h2 class="text-center">To-Do List</h2>
-  <button class="btn btn-primary mb-4" (click)="openModal()">Add New To-Do</button>
+<!-- Main Container with Background Color -->
+<div class="container mt-5 bg-light p-4 rounded">
 
-  <!-- To-Do Cards -->
-  <div class="row">
-    <div *ngFor="let todo of todos" class="col-md-4 mb-3">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">
-            <input type="checkbox" [(ngModel)]="todo.completed" class="form-check-input me-2" />
-            <span [class.text-decoration-line-through]="todo.completed">{{ todo.title }}</span>
-          </h5>
-          <p class="card-text">{{ todo.description }}</p>
-          <div class="d-flex justify-content-between">
-            <button class="btn btn-warning btn-sm" (click)="openModal(todo)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">Delete</button>
+  <!-- Button to Add New To-Do -->
+  <div class="d-flex justify-content-between mb-3">
+    <h2 class="text-primary">To-Do List</h2>
+    <button class="btn btn-success" (click)="openModal()">Add New To-Do</button>
+  </div>
+
+  <!-- List of To-Dos -->
+  <ul class="list-group mt-3">
+    <li *ngFor="let todo of todos" class="list-group-item d-flex justify-content-between align-items-center">
+      <!-- Checkbox for completing task -->
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          [checked]="todo.completed"
+          (change)="toggleComplete(todo)"
+        />
+      </div>
+
+      <span [ngClass]="{ 'text-decoration-line-through': todo.completed, 'text-muted': todo.completed }">
+        {{ todo.title }}
+      </span>
+
+      <div>
+        <button class="btn btn-warning btn-sm me-2" (click)="openModal(todo)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Modal for Adding/Editing To-Do -->
+  <ng-container *ngIf="isModalOpen">
+    <div class="modal fade show" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="todoModalLabel">{{ isEditing ? 'Edit To-Do' : 'Add New To-Do' }}</h5>
+            <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
           </div>
+          <form (ngSubmit)="saveTodo()" #todoForm="ngForm">
+            <div class="modal-body">
+              <!-- Title Field -->
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  [(ngModel)]="currentTodo.title"
+                  name="title"
+                  #title="ngModel"
+                  required
+                  [class.is-invalid]="title.touched && title.invalid"
+                />
+                <div class="invalid-feedback" *ngIf="title.touched && title.invalid">
+                  Title is required.
+                </div>
+              </div>
+
+              <!-- Description Field -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  id="description"
+                  class="form-control"
+                  [(ngModel)]="currentTodo.description"
+                  name="description"
+                  #description="ngModel"
+                  required
+                  [class.is-invalid]="description.touched && description.invalid"
+                ></textarea>
+                <div class="invalid-feedback" *ngIf="description.touched && description.invalid">
+                  Description is required.
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!todoForm.valid">
+                {{ isEditing ? 'Update' : 'Save' }}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 
-  <!-- Modal -->
- <!-- Modal for adding/editing to-do -->
-<ng-container *ngIf="isModalOpen">
-  <div class="modal fade show" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true" style="display: block;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="todoModalLabel">{{ isEditing ? 'Edit To-Do' : 'Add New To-Do' }}</h5>
-          <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
-        </div>
-        <form (ngSubmit)="saveTodo()" #todoForm="ngForm">
-          <div class="modal-body">
-            <!-- Title Field -->
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input
-                type="text"
-                id="title"
-                class="form-control"
-                [(ngModel)]="currentTodo.title"
-                name="title"
-                #title="ngModel"
-                required
-                [class.is-invalid]="title.touched && title.invalid"
-              />
-              <!-- Error Message for Title -->
-              <div class="text-danger" *ngIf="title.touched && title.invalid">
-                Title is required.
-              </div>
-            </div>
-
-            <!-- Description Field -->
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea
-                id="description"
-                class="form-control"
-                [(ngModel)]="currentTodo.description"
-                name="description"
-                #description="ngModel"
-                required
-                [class.is-invalid]="description.touched && description.invalid"
-              ></textarea>
-              <!-- Error Message for Description -->
-              <div class="text-danger" *ngIf="description.touched && description.invalid">
-                Description is required.
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
-            <!-- Disable the Save/Update Button if title or description is invalid -->
-            <button
-              type="submit"
-              class="btn btn-primary"
-              [disabled]="!todoForm.valid">
-              {{ isEditing ? 'Update' : 'Save' }}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</ng-container>
-
-
+</div>

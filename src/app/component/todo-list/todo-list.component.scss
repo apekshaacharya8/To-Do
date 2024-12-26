@@ -1,4 +1,35 @@
+/* Custom background for the page */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 10px;
+}
+
+/* Button Hover Effects */
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Completed Task Styling */
 .text-decoration-line-through {
   text-decoration: line-through;
-  color: gray;
+  color: #6c757d; /* Muted color for completed tasks */
+}
+
+/* Adjust the padding for list items */
+.list-group-item {
+  padding: 15px;
+}
+
+/* Add a little margin between the modal and the page */
+.modal-dialog {
+  margin-top: 10%;
+}
+
+/* Custom styling for the form inputs */
+.form-control {
+  border-radius: 5px;
 }

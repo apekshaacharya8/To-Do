@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService , Todo } from 'src/app/service/todo.service';
+import { TodoService, Todo } from 'src/app/service/todo.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class TodoListComponent implements OnInit {
   isModalOpen: boolean = false;
   todos: any[] = [];
   currentTodo = { title: '', description: '', id: '' };
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.todos = this.todoService.getTodos();
@@ -48,7 +48,7 @@ export class TodoListComponent implements OnInit {
       this.currentTodo = { ...todo };
     } else {
       this.isEditing = false;
-      this.currentTodo = { title: '', description: '' , id : ''};
+      this.currentTodo = { title: '', description: '', id: '' };
     }
     this.isModalOpen = true;
   }
@@ -80,7 +80,15 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteTodo(id: number): void {
-    // Filter out the to-do with the matching ID from the todos array
     this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+  // Toggle the completion status of the todo
+  toggleComplete(todo: { id: number, title: string, description: string, completed: boolean }): void {
+    todo.completed = !todo.completed;
+    this.saveTodosToLocalStorage();
+  }
+
+  saveTodosToLocalStorage(): void {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 }
