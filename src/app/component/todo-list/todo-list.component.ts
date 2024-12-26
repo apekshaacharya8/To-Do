@@ -60,12 +60,6 @@ export class TodoListComponent implements OnInit {
 
   // Save or update the to-do
   saveTodo(): void {
-    if (!this.currentTodo.title || !this.currentTodo.description) {
-      // Basic validation: ensure both title and description are provided
-      alert('Title and description are required!');
-      return;
-    }
-
     if (this.isEditing) {
       // If editing, find and update the existing to-do
       const index = this.todos.findIndex(todo => todo.id === this.currentTodo.id);
