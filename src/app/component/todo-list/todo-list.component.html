@@ -1,21 +1,15 @@
-<div>
-  <!-- Input field to add a new todo -->
-  <input type="text" placeholder="Add a new task..." [(ngModel)]="newTodoDescription" (keyup.enter)="addTodo(newTodoDescription)">
+<div class="container my-4">
+  <h2>To-Do List</h2>
+  <button class="btn btn-primary mb-3" (click)="newTodo()">Add New To-Do</button>
 
-  <!-- Button to add a new todo -->
-  <button (click)="addTodo(newTodoDescription)">Add</button>
+  <div *ngFor="let todo of todos" class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title">
+        <input type="checkbox" [(ngModel)]="todo.completed" /> {{ todo.title }}
+      </h5>
+      <p class="card-text">{{ todo.description }}</p>
+      <button class="btn btn-sm btn-warning me-2" (click)="editTodo(todo)">Edit</button>
+      <button class="btn btn-sm btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+    </div>
+  </div>
 </div>
-
-<!-- Display the list of todos -->
-<ul>
-  <li *ngFor="let todo of todos">
-    <!-- Checkbox to mark todo as completed -->
-    <input type="checkbox" [checked]="todo.completed" (change)="markAsCompleted(todo)">
-
-    <!-- Todo description -->
-    <span [style.textDecoration]="todo.completed ? 'line-through' : 'none'">{{ todo.description }}</span>
-
-    <!-- Button to delete todo -->
-    <button (click)="deleteTodo(todo)">Delete</button>
-  </li>
-</ul>
