@@ -1,35 +1,179 @@
-/* Custom background for the page */
-body {
-  background-color: #f8f9fa;
+/* Container for the entire app */
+.container {
+  background-color: #f4f7fc; /* Soft background color */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Header Styling */
+h2 {
+  color: #4a4a4a;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #ffffff; /* White background for the table */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow under table */
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 15px; /* Add padding for better readability */
+}
+
+.table th {
+  background-color: #007bff; /* Header with primary color */
+  color: #fff;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Light gray for odd rows */
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through;
+  color: #aaa; /* Muted color for completed tasks */
+}
+
+.text-muted {
+  color: #aaa;
 }
 
 /* Modal Styling */
 .modal-content {
-  border-radius: 10px;
+  background-color: #ffffff; /* White background for the modal */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
 }
 
-/* Button Hover Effects */
-.btn:hover {
-  opacity: 0.8;
-}
-
-/* Completed Task Styling */
-.text-decoration-line-through {
-  text-decoration: line-through;
-  color: #6c757d; /* Muted color for completed tasks */
-}
-
-/* Adjust the padding for list items */
-.list-group-item {
+/* Modal Header */
+.modal-header {
+  background-color: #007bff; /* Blue header for the modal */
+  color: white;
+  font-weight: bold;
   padding: 15px;
 }
 
-/* Add a little margin between the modal and the page */
-.modal-dialog {
-  margin-top: 10%;
+/* Close Button in Modal */
+.modal-header .btn-close {
+  color: white; /* White close button */
 }
 
-/* Custom styling for the form inputs */
-.form-control {
+/* Modal Body */
+.modal-body {
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 20px;
+}
+
+.modal-body input,
+.modal-body textarea {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.modal-body input:focus,
+.modal-body textarea:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Modal Footer */
+.modal-footer {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+
+/* Buttons in Modal */
+.modal-footer .btn-secondary {
+  background-color: #6c757d; /* Muted secondary button */
+  border-color: #6c757d;
+}
+
+.modal-footer .btn-primary {
+  background-color: #007bff; /* Blue primary button */
+  border-color: #007bff;
+}
+
+.modal-footer .btn:hover {
+  background-color: #0056b3; /* Darker shade on button hover */
+  border-color: #004085;
+}
+
+/* Table Buttons */
+.btn-sm {
+  margin-left: 5px;
+}
+
+.table button {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.table button:hover {
+  background-color: #007bff; /* Hover effect for table buttons */
+  color: white;
+}
+
+/* Add/Edit Todo Button */
+.btn-success {
+  background-color: #28a745; /* Green for adding new todo */
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Checkboxes */
+.form-check-input {
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: #007bff; /* Blue for checked state */
+  border-color: #007bff;
+}
+/* Modal fade-in effect */
+.modal.fade {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal.fade.show {
+  opacity: 1;
+}
+
+/* Button hover effect */
+.btn:hover {
+  transform: scale(1.05); /* Slightly increase size for hover effect */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Table row hover effect */
+.table tbody tr:hover {
+  background-color: #e6f7ff; /* Light hover effect */
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
