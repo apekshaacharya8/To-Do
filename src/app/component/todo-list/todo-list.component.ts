@@ -8,10 +8,11 @@ import { TodoService , Todo } from 'src/app/service/todo.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  todos: Todo[] = [];
-  currentTodo: Todo = { id: 0, title: '', description: '', completed: false };
+  //todos: Todo[] = [];
   isEditing: boolean = false;
-
+  isModalOpen: boolean = false;
+  todos: any[] = [];
+  currentTodo = { title: '', description: '', id: '' };
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
@@ -40,18 +41,52 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  deleteTodo(id: number): void {
-    if (confirm('Are you sure you want to delete this to-do?')) {
-      this.todoService.deleteTodo(id);
-      this.todos = this.todoService.getTodos();
+  // Function to open modal
+  openModal(todo?: any): void {
+    if (todo) {
+      this.isEditing = true;
+      this.currentTodo = { ...todo };
+    } else {
+      this.isEditing = false;
+      this.currentTodo = { title: '', description: '' , id : ''};
     }
+    this.isModalOpen = true;
   }
 
-  openModal(todo?: Todo){
-
+  // Function to close the modal
+  closeModal(): void {
+    this.isModalOpen = false;
   }
 
-  saveTodo(){
+  // Save or update the to-do
+  saveTodo(): void {
+    if (!this.currentTodo.title || !this.currentTodo.description) {
+      // Basic validation: ensure both title and description are provided
+      alert('Title and description are required!');
+      return;
+    }
 
+    if (this.isEditing) {
+      // If editing, find and update the existing to-do
+      const index = this.todos.findIndex(todo => todo.id === this.currentTodo.id);
+      if (index !== -1) {
+        this.todos[index] = { ...this.currentTodo };
+      }
+    } else {
+      const newTodo = { ...this.currentTodo, id: this.generateId() };
+      this.todos.push(newTodo); // Add the new to-do to the list
+    }
+
+    this.closeModal();
+  }
+
+  // Simple function to generate a unique ID for new todos
+  generateId(): number {
+    return this.todos.length ? Math.max(...this.todos.map(todo => todo.id)) + 1 : 1;
+  }
+
+  deleteTodo(id: number): void {
+    // Filter out the to-do with the matching ID from the todos array
+    this.todos = this.todos.filter(todo => todo.id !== id);
   }
 }
